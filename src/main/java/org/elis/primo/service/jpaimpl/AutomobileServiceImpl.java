@@ -4,10 +4,12 @@ import lombok.RequiredArgsConstructor;
 import org.elis.primo.model.Automobile;
 import org.elis.primo.repository.AutomobileRepository;
 import org.elis.primo.service.def.AutomobileService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 @RequiredArgsConstructor
 public class AutomobileServiceImpl implements AutomobileService {
 
