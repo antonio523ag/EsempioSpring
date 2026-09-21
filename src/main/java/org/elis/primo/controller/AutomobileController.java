@@ -1,9 +1,12 @@
 package org.elis.primo.controller;
 
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
 import org.elis.primo.db.SingletonDb;
 import org.elis.primo.model.Automobile;
+import org.elis.primo.service.def.AutomobileService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +16,15 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/automobile")
+@RequiredArgsConstructor
 public class AutomobileController {
+
+    //@Autowired
+    private final AutomobileService service;
+
+//    public AutomobileController(AutomobileService service) {
+//        this.service = service;
+//    }
 
     @PostMapping("/add")
     public ResponseEntity<Long> creaAutomobile(@RequestBody Automobile automobile){

@@ -3,9 +3,11 @@ package org.elis.primo.service.inmemoryimpl;
 import org.elis.primo.db.SingletonDb;
 import org.elis.primo.model.Automobile;
 import org.elis.primo.service.def.AutomobileService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class AutomobileServiceImpl implements AutomobileService {
 
     SingletonDb instance=SingletonDb.getInstance();
@@ -24,23 +26,38 @@ public class AutomobileServiceImpl implements AutomobileService {
         return instance.aggiungiAutomobile(automobile);
     }
 
+
+
     @Override
     public Automobile rimuoviAutomobile(long id) {
-        return null;
+        Automobile a=instance.getAutomobili().stream()
+                .filter(autoPresente->
+                        autoPresente.getId()==id)
+                .findAny().orElse(null);
+        if(a==null){
+            return null;
+        }
+        instance.getAutomobili().remove(a);
+        return a;
     }
 
     @Override
     public List<Automobile> getAll() {
-        return List.of();
+        return instance.getAutomobili();
     }
 
     @Override
     public Automobile getAutomobile(long id) {
-        return null;
+        return instance.getAutomobili().stream()
+                .filter(a->a.getId()==id)
+                .findAny().orElse(null);
     }
 
     @Override
     public Automobile getAutomobile(String targa) {
-        return null;
+        return instance.getAutomobili().stream()
+                .filter(a->a.getTarga()
+                        .equalsIgnoreCase(targa))
+                .findAny().orElse(null);
     }
 }
