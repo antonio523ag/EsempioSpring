@@ -1,0 +1,11 @@
+aggiungi auto
+assegna auto a persona
+registrati
+aggiungi indirizzo
+assegna indirizzo a persona
+rimuovi indirizzo da persona
+visualizza persona per id
+visualizza indirizzo per id
+visualizza abitanti per id indirizzo
+visualizza tutte le persone
+visualizza tutti gli indirizzi
