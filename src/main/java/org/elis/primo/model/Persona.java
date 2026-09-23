@@ -1,5 +1,6 @@
 package org.elis.primo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -23,6 +24,7 @@ public class Persona {
     private String cognome;
     @Column(name = "mail_address")
     private String email;
+    //@JsonIgnore
     @OneToMany(mappedBy = "proprietario")
     //il "proprietario" è l'attributo java non SQL
     private List<Automobile> automobili;

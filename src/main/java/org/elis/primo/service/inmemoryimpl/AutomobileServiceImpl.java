@@ -1,6 +1,7 @@
 package org.elis.primo.service.inmemoryimpl;
 
 import org.elis.primo.db.SingletonDb;
+import org.elis.primo.dto.response.AutomobileDTO;
 import org.elis.primo.model.Automobile;
 import org.elis.primo.service.def.AutomobileService;
 import org.springframework.stereotype.Service;
@@ -42,8 +43,8 @@ public class AutomobileServiceImpl implements AutomobileService {
     }
 
     @Override
-    public List<Automobile> getAll() {
-        return instance.getAutomobili();
+    public List<AutomobileDTO> getAll() {
+        return null;
     }
 
     @Override

@@ -1,11 +1,13 @@
 package org.elis.primo.service.jpaimpl;
 
 import lombok.RequiredArgsConstructor;
+import org.elis.primo.dto.response.AutomobileDTO;
 import org.elis.primo.model.Automobile;
 import org.elis.primo.repository.AutomobileRepository;
 import org.elis.primo.service.def.AutomobileService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,8 +34,25 @@ public class AutomobileServiceImpl implements AutomobileService {
     }
 
     @Override
-    public List<Automobile> getAll() {
-        return repo.findAll();
+    public List<AutomobileDTO> getAll() {
+
+        List<Automobile> l= repo.findAll();
+        List<AutomobileDTO> response=l.stream()
+                .map(a->new AutomobileDTO(
+                        a.getId(),
+                        a.getMarca(),
+                        a.getModello(),
+                        a.getTarga(),
+                        a.getDataImmatricolazione(),
+                        a.getCilindrata(),
+                        a.getProprietario()!=null?a.getProprietario().getNome():null,
+                        a.getProprietario()!=null?a.getProprietario().getCognome():null,
+                        a.getColore(),
+                        a.getNIncidenti(),
+                        a.getKm(),
+                        a.getCambio()
+                )).toList();
+        return response;
     }
 
     @Override

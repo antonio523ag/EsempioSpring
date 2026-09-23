@@ -74,6 +74,7 @@ package org.elis.primo.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.elis.primo.db.SingletonDb;
+import org.elis.primo.dto.response.AutomobileDTO;
 import org.elis.primo.model.Automobile;
 import org.elis.primo.service.def.AutomobileService;
 import org.springframework.http.HttpStatus;
@@ -102,8 +103,8 @@ public class AutomobileController {
     }
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<Automobile>> getAll(){
-        List<Automobile> automobili=service.getAll();
+    public ResponseEntity<List<AutomobileDTO>> getAll(){
+        List<AutomobileDTO> automobili=service.getAll();
         return new ResponseEntity<>
                 (automobili, HttpStatus.OK);
     }
