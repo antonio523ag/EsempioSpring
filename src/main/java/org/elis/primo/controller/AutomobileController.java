@@ -73,7 +73,9 @@
 package org.elis.primo.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.elis.primo.dto.request.CreaAutomobileDTO;
 import org.elis.primo.dto.response.AutomobileDTO;
+import org.elis.primo.facade.def.AutomobileFacade;
 import org.elis.primo.model.Automobile;
 import org.elis.primo.service.def.AutomobileService;
 import org.springframework.http.HttpStatus;
@@ -89,15 +91,16 @@ public class AutomobileController {
 
     //@Autowired
     private final AutomobileService service;
+    private final AutomobileFacade facade;
 
 //    public AutomobileController(AutomobileService service) {
 //        this.service = service;
 //    }
 
     @PostMapping("/add")
-    public ResponseEntity<Long> creaAutomobile(@RequestBody Automobile automobile){
-        long id=service.creaAutomobile(automobile);
-        return new ResponseEntity<>(id, HttpStatus.OK);
+    public ResponseEntity<AutomobileDTO> creaAutomobile(@RequestBody CreaAutomobileDTO automobile){
+        AutomobileDTO response=facade.creaAutomobile(automobile);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @GetMapping("/getAll")
@@ -105,6 +108,14 @@ public class AutomobileController {
         List<AutomobileDTO> automobili=service.getAll();
         return new ResponseEntity<>
                 (automobili, HttpStatus.OK);
+    }
+
+    @PutMapping("/assegna/{idAutomobile}/{idPersona}")
+    public ResponseEntity<Void> assegna(
+            @PathVariable long idAutomobile,
+            @PathVariable long idPersona){
+        facade.assegna(idAutomobile, idPersona);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 

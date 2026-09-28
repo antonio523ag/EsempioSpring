@@ -2,6 +2,7 @@ package org.elis.primo.service.def;
 
 import org.elis.primo.dto.response.AutomobileDTO;
 import org.elis.primo.model.Automobile;
+import org.elis.primo.model.Persona;
 
 import java.util.List;
 
@@ -12,5 +13,9 @@ public interface AutomobileService {
     List<AutomobileDTO> getAll();
     Automobile getAutomobile(long id);
     Automobile getAutomobile(String targa);
+    List<Automobile> getAllByIdIndirizzo(List<Long> ids);
 
+    void setPersona(Persona p, Automobile a);
+
+    Automobile salva(Automobile a);
 }

@@ -17,4 +17,6 @@ public interface AutomobileRepository
 
     @Query(nativeQuery = true, value = "select * from Automobile where targa = :targa")
     Optional<Automobile> trovaByTarga(String targa);
+
+    List<Automobile> findAllByProprietario_idIn(List<Long> ids);
 }

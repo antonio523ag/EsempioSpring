@@ -3,8 +3,10 @@ package org.elis.primo.service.jpaimpl;
 import lombok.RequiredArgsConstructor;
 import org.elis.primo.dto.response.AutomobileDTO;
 import org.elis.primo.model.Automobile;
+import org.elis.primo.model.Persona;
 import org.elis.primo.repository.AutomobileRepository;
 import org.elis.primo.service.def.AutomobileService;
+import org.elis.primo.service.def.PersonaService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.Optional;
 public class AutomobileServiceImpl implements AutomobileService {
 
     private final AutomobileRepository repo;
+
 
     @Override
     public long creaAutomobile(Automobile automobile) {
@@ -42,7 +45,7 @@ public class AutomobileServiceImpl implements AutomobileService {
                         a.getMarca(),
                         a.getModello(),
                         a.getTarga(),
-                        a.getDataImmatricolazione(),
+                        a.getDataImmatricolazione().toString(),
                         a.getCilindrata(),
                         a.getProprietario()!=null?a.getProprietario().getNome():null,
                         a.getProprietario()!=null?a.getProprietario().getCognome():null,
@@ -75,4 +78,24 @@ public class AutomobileServiceImpl implements AutomobileService {
     public Automobile getAutomobile(String targa) {
         return repo.trovaByTarga(targa).orElse(null);
     }
+
+    @Override
+    public List<Automobile> getAllByIdIndirizzo(List<Long> idPersone) {
+        return repo.findAllById(idPersone);
+    }
+
+    @Override
+    public void setPersona(Persona p, Automobile a) {
+        a.setProprietario(p);
+        repo.save(a);
+    }
+
+    @Override
+    public Automobile salva(Automobile a) {
+        if(a.getTarga()==null||
+                a.getTarga().length()!=7)return null;
+        return repo.save(a);
+    }
+
+
 }

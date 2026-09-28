@@ -9,7 +9,7 @@ public record AutomobileDTO(
         String marca,
         String modello,
         String targa,
-        LocalDate dataImmatricolazione,
+        String dataImmatricolazione,
         String cilindrata,
         String nomeProprietario,
         String cognomeProprietario,
