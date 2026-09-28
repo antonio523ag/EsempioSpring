@@ -4,7 +4,6 @@ import org.elis.primo.db.SingletonDb;
 import org.elis.primo.dto.response.AutomobileDTO;
 import org.elis.primo.model.Automobile;
 import org.elis.primo.service.def.AutomobileService;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

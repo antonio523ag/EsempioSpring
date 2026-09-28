@@ -73,7 +73,6 @@
 package org.elis.primo.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.elis.primo.db.SingletonDb;
 import org.elis.primo.dto.response.AutomobileDTO;
 import org.elis.primo.model.Automobile;
 import org.elis.primo.service.def.AutomobileService;
@@ -81,7 +80,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController

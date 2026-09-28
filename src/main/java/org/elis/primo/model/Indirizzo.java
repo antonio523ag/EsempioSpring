@@ -3,6 +3,8 @@ package org.elis.primo.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Data
 @Table(uniqueConstraints = {
@@ -17,4 +19,6 @@ public class Indirizzo {
     private String civico;
     private String cap;
     private String citta;
+    @ManyToMany(mappedBy = "indirizzi",fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    private List<Persona> persone;
 }

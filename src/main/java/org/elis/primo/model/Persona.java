@@ -1,6 +1,5 @@
 package org.elis.primo.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -28,5 +27,18 @@ public class Persona {
     @OneToMany(mappedBy = "proprietario")
     //il "proprietario" è l'attributo java non SQL
     private List<Automobile> automobili;
+    @ManyToMany
+    @JoinTable(name = "indirizzi_persone",
+            //questo si riferisce all'entità dove sto scrivendo
+            joinColumns = @JoinColumn(name = "id_persona"),
+            //questo si riferisce all'altra entità, quella dell'attributo in basso
+            inverseJoinColumns = @JoinColumn(name = "id_indirizzo"),
+            uniqueConstraints = {
+            @UniqueConstraint(name = "persona_indirizzo_univoca",
+                    columnNames = {"id_persona","id_indirizzo"})
+            }
+
+        )
+    private List<Indirizzo> indirizzi;
 
 }

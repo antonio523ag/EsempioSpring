@@ -7,7 +7,6 @@ import org.elis.primo.repository.AutomobileRepository;
 import org.elis.primo.service.def.AutomobileService;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
