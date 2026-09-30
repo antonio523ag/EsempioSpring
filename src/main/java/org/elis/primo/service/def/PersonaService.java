@@ -5,7 +5,7 @@ import org.elis.primo.model.Persona;
 import java.util.List;
 
 public interface PersonaService {
-    Persona creaPersona(Persona persona);
+    Persona salva(Persona persona);
     Persona getById(long id);
     Persona getPersonaByIdAutomobile(long id);
     List<Persona> getPersone();

@@ -18,13 +18,14 @@ public class PersonaServiceImpl implements PersonaService {
     private final AutomobileService automobileService;
 
     @Override
-    public Persona creaPersona(Persona persona) {
-        return null;
+    public Persona salva(Persona persona) {
+        return repo.save(persona);
+
     }
 
     @Override
     public Persona getById(long id) {
-        return null;
+        return repo.findById(id).orElse(null);
     }
 
     @Override
@@ -34,7 +35,7 @@ public class PersonaServiceImpl implements PersonaService {
 
     @Override
     public List<Persona> getPersone() {
-        return List.of();
+        return repo.findAll();
     }
 
     @Override
