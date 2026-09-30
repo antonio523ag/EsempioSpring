@@ -21,6 +21,7 @@ public class PersonaMapper {
         p.setEmail(requestDTO.email());
         p.setNome(requestDTO.nome());
         p.setCognome(requestDTO.cognome());
+        p.setVersione(requestDTO.versione());
         return p;
     }
 
@@ -30,6 +31,7 @@ public class PersonaMapper {
         dto.setNome(p.getNome());
         dto.setCognome(p.getCognome());
         dto.setId(p.getId());
+        dto.setVersione(p.getVersione());
         return dto;
 
     }

@@ -27,6 +27,7 @@ public class PersonaFacadeImpl implements PersonaFacade {
     public void modifica(ModificaPersonaRequestDTO request) {
         Persona p=personaService.getById(request.id());
         personaMapper.toEntity(p,request);
+        System.out.println(p);
         personaService.salva(p);
     }
 

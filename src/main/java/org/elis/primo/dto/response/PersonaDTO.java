@@ -10,4 +10,5 @@ public class PersonaDTO {
     private String nome;
     private String cognome;
     private String email;
+    private long versione;
 }

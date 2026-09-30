@@ -2,6 +2,7 @@ package org.elis.primo.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
                 {"name","surname","mail_address"}
                 , name = "persona_univoca")
 })
+@ToString
 public class Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +25,9 @@ public class Persona {
     private String cognome;
     @Column(name = "mail_address")
     private String email;
+    @Version
+    @Column(updatable = false)
+    private long versione;
     //@JsonIgnore
     @OneToMany(mappedBy = "proprietario")
     //il "proprietario" è l'attributo java non SQL

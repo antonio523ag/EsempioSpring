@@ -7,6 +7,7 @@ import org.elis.primo.repository.PersonaRepository;
 import org.elis.primo.service.def.AutomobileService;
 import org.elis.primo.service.def.PersonaService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class PersonaServiceImpl implements PersonaService {
 
     private final PersonaRepository repo;
     private final AutomobileService automobileService;
+
 
     @Override
     public Persona salva(Persona persona) {
