@@ -2,6 +2,7 @@ package org.elis.primo.mapper;
 
 import org.elis.primo.dto.request.ModificaPersonaRequestDTO;
 import org.elis.primo.dto.request.RegistrazioneRequestDTO;
+import org.elis.primo.dto.response.PersonaDTO;
 import org.elis.primo.model.Persona;
 import org.springframework.stereotype.Component;
 
@@ -21,5 +22,15 @@ public class PersonaMapper {
         p.setNome(requestDTO.nome());
         p.setCognome(requestDTO.cognome());
         return p;
+    }
+
+    public PersonaDTO toPersonaDTO(Persona p){
+        PersonaDTO dto = new PersonaDTO();
+        dto.setEmail(p.getEmail());
+        dto.setNome(p.getNome());
+        dto.setCognome(p.getCognome());
+        dto.setId(p.getId());
+        return dto;
+
     }
 }

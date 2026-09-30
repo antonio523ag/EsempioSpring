@@ -3,6 +3,7 @@ package org.elis.primo.facade.impl;
 import lombok.RequiredArgsConstructor;
 import org.elis.primo.dto.request.ModificaPersonaRequestDTO;
 import org.elis.primo.dto.request.RegistrazioneRequestDTO;
+import org.elis.primo.dto.response.PersonaDTO;
 import org.elis.primo.facade.def.PersonaFacade;
 import org.elis.primo.mapper.PersonaMapper;
 import org.elis.primo.model.Persona;
@@ -27,5 +28,11 @@ public class PersonaFacadeImpl implements PersonaFacade {
         Persona p=personaService.getById(request.id());
         personaMapper.toEntity(p,request);
         personaService.salva(p);
+    }
+
+    @Override
+    public PersonaDTO getById(long id) {
+        Persona p=personaService.getById(id);
+        return personaMapper.toPersonaDTO(p);
     }
 }
