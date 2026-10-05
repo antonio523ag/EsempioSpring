@@ -1,0 +1,50 @@
+creare un software per la gestione di un bar, il software gestirà l'inserimento delle ricette, gli ordini, i prezzi, le scorte di magazzino per i prodotti base
+
+Utente:{
+	"nome":String
+	"cognome":String
+	"dataNascita":LocalDate
+	"email":String
+	"password":String
+	ruolo:{CLIENTE,BARTENDING,GESTORE_SCORTE,ADDETTO_CASSA}
+}
+
+Prodotto:{
+	"nome":String
+	"quantita":int
+	"prezzo":double
+	"tassoAlcolicoPerc":double
+}
+
+Cocktail:{
+	"nome":String
+	"prezzo":double
+	"ingredienti":List<IngredientiNelCocktail>
+}
+
+IngredientiNelCocktail:{
+	"cocktail":Cocktail
+	"quantitaCl":int
+	"prodotto":Prodotto
+}
+
+Ordine:{
+	"cliente":Cliente
+	"cocktail":List<Cocktail>
+	"inviato":boolean
+	"evaso":boolean
+	"pagato":boolean
+}
+
+registrazione cliente/login
+
+il cliente può visualizzare i cocktail che hanno tutti i prodotti ancora disponibili, aggiungere un cocktail all'ordine, inviare un ordine, visualizzare i vecchi ordini, all'aggiunta del cocktail se il cliente non ha ordini "attivi", il sistema in automatico creerà un ordine (booleana inviato)
+
+il responsabile di cassa vedrà tutti gli ordini inviati e potrà segnalare il pagamento
+
+il bartender vedrà tutti gli ordini pagati, potrà segnalare l'ordine come "evaso" una volta completato, accedere all'elenco dei prodotti e diminuirne la disponibilità, aggiungerà anche nuove ricette di cocktail
+
+il gestore scorte potrà caricare i prodotti in magazzino
+
+
+
