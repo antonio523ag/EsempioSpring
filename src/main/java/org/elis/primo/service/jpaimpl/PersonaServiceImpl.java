@@ -1,14 +1,19 @@
 package org.elis.primo.service.jpaimpl;
 
 import lombok.RequiredArgsConstructor;
+import org.elis.primo.exception.PersonaGiaPresenteException;
 import org.elis.primo.model.Automobile;
 import org.elis.primo.model.Persona;
 import org.elis.primo.repository.PersonaRepository;
 import org.elis.primo.service.def.AutomobileService;
 import org.elis.primo.service.def.PersonaService;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 @Service
@@ -21,7 +26,17 @@ public class PersonaServiceImpl implements PersonaService {
 
     @Override
     public Persona salva(Persona persona) {
-        return repo.save(persona);
+        try {
+            return repo.save(persona);
+        }catch (Exception e){
+            if(e instanceof DataIntegrityViolationException ex){
+                //throw new PersonaGiaPresenteException(persona.getEmail());
+                throw new ResponseStatusException(
+                        HttpStatus.CONFLICT,persona.getNome()+" "+
+                        persona.getCognome()+
+                        " è già presente con questa mail");
+            }else return null;
+        }
 
     }
 
