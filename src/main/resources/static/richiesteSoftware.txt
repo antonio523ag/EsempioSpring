@@ -38,7 +38,7 @@ Ordine:{
 
 registrazione cliente/login
 
-il cliente può visualizzare i cocktail che hanno tutti i prodotti ancora disponibili, aggiungere un cocktail all'ordine, inviare un ordine, visualizzare i vecchi ordini, all'aggiunta del cocktail se il cliente non ha ordini "attivi", il sistema in automatico creerà un ordine (booleana inviato)
+il cliente può visualizzare i cocktail che hanno tutti i prodotti ancora disponibili, aggiungere un cocktail all'ordine, inviare un ordine, visualizzare i vecchi ordini, all'aggiunta del cocktail se il cliente non ha ordini "attivi", il sistema in automatico creerà un ordine (booleana inviato), il cliente potrà filtrare i cockail inserendo i testi e dove ricercare quel testo (Vodka - nome prodotto, oppure gin nel nome del cocktail)
 
 il responsabile di cassa vedrà tutti gli ordini inviati e potrà segnalare il pagamento
 
